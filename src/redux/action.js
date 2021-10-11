@@ -6,7 +6,7 @@ import {
   export function getData() {
     return async function (dispatch) {
       return await api
-        .get("https://api.themoviedb.org/movie/popular?api_key="+api_key, {
+        .get("/movie/popular?api_key="+api_key, {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
