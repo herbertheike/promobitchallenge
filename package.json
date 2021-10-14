@@ -10,17 +10,20 @@
     "local-cors-proxy": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-paginate": "^7.1.3",
     "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "lcp --proxyUrl https://api.themoviedb.org/3/"
   },
   "eslintConfig": {
     "extends": [

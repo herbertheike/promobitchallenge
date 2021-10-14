@@ -1,12 +1,14 @@
 import {
-    GET_MOVIE_POPULAR
+    GET_MOVIE_POPULAR,
+    GET_MOVIE_DETAIL,
+    GET_MOVIE_GENRE
   } from "./actionTypes";
   import api from "../api/index";
   
-  export function getData() {
+  export function getData(page) {
     return async function (dispatch) {
       return await api
-        .get("/movie/popular?api_key="+api_key, {
+        .get("/movie/popular?api_key="+api_key+"&language=pt-BR&page="+page+"&region=BR", {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -14,7 +16,7 @@ import {
           },
         })
         .then((response) => {
-          dispatch(getDataSuccess(response));
+          dispatch(getDataSuccess(response.data));
         });
     };
   }
@@ -22,8 +24,55 @@ import {
   const getDataSuccess = (data) => {
     return {
       type: GET_MOVIE_POPULAR,
-      movies_popular: data,
-      length: data.length,
+      moviespopular: data,
+      totalPages:data.total_pages
+    };
+  };
+
+  export function getDetail(movieid) {
+    return async function (dispatch) {
+      return await api
+        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR", {
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response)
+          //dispatch(getMovieDetail(response.data));
+        });
+    };
+  }
+
+  const getMovieDetail = (data) => {
+    return {
+      type: GET_MOVIE_DETAIL,
+      moviedetail: data,
+    };
+  };
+
+  export function getGenre() {
+    return async function (dispatch) {
+      return await api
+        .get("genre/movie/list?api_key="+api_key+"&language=pt-BR", {
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          dispatch(getGenreSuccess(response.data));
+        });
+    };
+  }
+
+  const getGenreSuccess= (data) => {
+    return {
+      type: GET_MOVIE_GENRE,
+      moviegenre: data
     };
   };
 
