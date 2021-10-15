@@ -18,6 +18,7 @@ export const Box = styled.div`
 export const Section = styled.div`
   background-color: rgb(18, 18, 18);
   min-height: 100vh;
+  text-align:center;
   background-image: linear-gradient(180deg, #41295a 0%, #2f0743 100%);
 `;
 //rgba(243,243,72,1) 0%, rgba(65,170,111,0.43) 100%)
@@ -116,6 +117,8 @@ export const Title = styled.title`
     white-space: nowrap;
     flex-grow: 1;
     padding-left 1rem;
+    color:white;
+    
 `;
 export const Menu = styled.div`
   position: relative;
@@ -231,13 +234,30 @@ export const A = styled.a`
   }
 `;
 export const FilterContainer = styled.div`
+    padding: 10px;
+    column-gap: 30px;
+    column-count: 4;
+    align-items: center; 
+    justify-content: center;
+    display: inline-block;
+    text-align:justify
+
+`;
+export const FilterColumn = styled.div`
+  align-items: center; 
+  justify-content: center;
+  
+`;
+export const FilterElement = styled.div`
   display:flex;
   flex-direction:row;
+  box-sizing: border-box;
 `;
 export const FilterLabel = styled.label`
   font-size:12px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  color: rgb(255,255,255);
 `;
 export const FilterCheckBox = styled.input.attrs({ type: 'checkbox' })`
-
+background-color:white;
 `;

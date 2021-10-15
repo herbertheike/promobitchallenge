@@ -1,7 +1,9 @@
 import {
     GET_MOVIE_POPULAR,
     GET_MOVIE_DETAIL,
-    GET_MOVIE_GENRE
+    GET_MOVIE_GENRE,
+    SET_GENRE,
+    REMOVE_GENRE
   } from "./actionTypes";
   import api from "../api/index";
   
@@ -75,5 +77,12 @@ import {
       moviegenre: data
     };
   };
+
+  export function setGenre(id){
+    return{
+      type:SET_GENRE,
+      id:id
+    }
+  }
 
   const api_key = "95fd72b0a390903e28731f934a0b094e"

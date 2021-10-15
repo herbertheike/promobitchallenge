@@ -1,3 +1,5 @@
 export const GET_MOVIE_POPULAR = "GET_MOVIE_POPULAR";
 export const GET_MOVIE_DETAIL = "GET_MOVIE_DETAIL";
 export const GET_MOVIE_GENRE = "GET_MOVIE_GENRE";
+export const SET_GENRE = "SET_GENRE";
+export const REMOVE_GENRE = "REMOVE_GENRE";

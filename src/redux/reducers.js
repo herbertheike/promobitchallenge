@@ -1,14 +1,18 @@
 import {
     GET_MOVIE_POPULAR,
     GET_MOVIE_DETAIL,
-    GET_MOVIE_GENRE
+    GET_MOVIE_GENRE,
+    SET_GENRE,
+    REMOVE_GENRE
   } from "./actionTypes";
   
   const initialState = {
     moviespopular:[],
     moviedetail:[],
     totalPages:0,
-    moviegenre:[]
+    moviegenre:[],
+    id:[],
+    moviebygenre:[]
   };
   const reducer = (state = initialState, action) => {
     console.log(action);
@@ -19,6 +23,9 @@ import {
         return { ...state, moviedetail: action.moviedetail };
       case GET_MOVIE_GENRE:
         return { ...state,moviegenre: action.moviegenre };
+      case SET_GENRE:
+        return { ...state, id:state.id.concat(action.id)}
+
       default:
         return state;
     }
