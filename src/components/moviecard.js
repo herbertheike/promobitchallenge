@@ -1,27 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  AudioPlayer,
   SubTitle,
   Label,
-  Tag,
   CardContainer,
   CardContent,
   MoviePoster,
-  A,
 } from "../styles/style";
-
 
 
 const Moviecard = ({
   id,
   title,
   overview,
-  album,
+  vote,
   duration,
-  preview,
-  albumcover,
-  link,
+  moviecover,
+  link
 }) => {
   return (
     <CardContainer>
@@ -30,10 +25,13 @@ const Moviecard = ({
             {title}
         </SubTitle>
         <Label>
-          {overview} - {album}
+          {overview} - {vote}
+        </Label>
+        <Label>
+          {duration}
         </Label>
       </CardContent>
-      <MoviePoster src={"https://image.tmdb.org/t/p/original/"+albumcover} alt="Album cover" />
+      <MoviePoster src={"https://image.tmdb.org/t/p/original/"+moviecover} alt="Movie cover" />
     </CardContainer>
   );
 };

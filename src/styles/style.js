@@ -193,6 +193,15 @@ export const MoviePoster = styled.img`
   object-fit: cover;
   max-width: 25rem;
 `;
+export const MoviePosterDetail = styled.img`
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 25rem;
+  width:20rem;
+  object-fit: cover;
+  max-width: 30rem;
+`;
 export const Button = styled.button`
   display: flex;
   padding-left: 16px;

@@ -3,7 +3,8 @@ import {
     GET_MOVIE_DETAIL,
     GET_MOVIE_GENRE,
     SET_GENRE,
-    REMOVE_GENRE
+    REMOVE_GENRE,
+    MOVIESBYGENRE
   } from "./actionTypes";
   import api from "../api/index";
   
@@ -26,7 +27,7 @@ import {
   const getDataSuccess = (data) => {
     return {
       type: GET_MOVIE_POPULAR,
-      moviespopular: data,
+      movielist: data,
       totalPages:data.total_pages
     };
   };
@@ -34,7 +35,7 @@ import {
   export function getDetail(movieid) {
     return async function (dispatch) {
       return await api
-        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR", {
+        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR&with_genres=28", {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -42,8 +43,8 @@ import {
           },
         })
         .then((response) => {
-          console.log(response)
-          //dispatch(getMovieDetail(response.data));
+         // console.log(response)
+          dispatch(getMovieDetail(response.data));
         });
     };
   }
@@ -78,11 +79,47 @@ import {
     };
   };
 
+  export function movieByGenre(id){
+    console.log(id)
+    return async function (dispatch) {
+      return await api
+        .get("discover/movie?api_key="
+        +api_key+
+        "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
+        +id, {
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          dispatch(movieGenre(response.data));
+        });
+    };
+  }
+
+  export function movieGenre(data){
+    return{
+      type:MOVIESBYGENRE,
+      movielist:data,
+      totalPages:data.total_pages
+    }
+  }
+
   export function setGenre(id){
     return{
       type:SET_GENRE,
       id:id
     }
   }
+
+  export function removeGenre(id){
+    return{
+      type:REMOVE_GENRE,
+      id:id
+    }
+  }
+
 
   const api_key = "95fd72b0a390903e28731f934a0b094e"
