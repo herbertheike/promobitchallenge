@@ -1,4 +1,4 @@
-import nc from "next/connect";
+import nc from "next-connect";
 import cors from "cors";
 
 const handler = nc()
