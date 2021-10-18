@@ -41,7 +41,7 @@ export class index extends Component {
   };
 
   componentDidMount() {
-    this.props.movieByGenre(this.state.page);
+    this.props.movieByGenre(0,this.state.page);
     this.props.getGenre();
   }
 
@@ -61,12 +61,12 @@ export class index extends Component {
       let b = str.concat(value+",")
       this.setState({str:b})
       console.log(b)
-      this.props.movieByGenre(b)
+      this.props.movieByGenre(b, this.state.page)
     }else{
       let c = str.replace(value+",",'')
       this.setState({str:c})
       console.log(c)
-      this.props.movieByGenre(c)
+      this.props.movieByGenre(c,this.state.page)
     }
   }
   render() {
@@ -74,21 +74,20 @@ export class index extends Component {
       <Container>
         <Topbar>
           <Menu>
+          <>
+          <A href={"/"} style={{padding:10}}>
+                Home
+              </A>
+              <A href={"/genero"} style={{padding:10}}> 
+                Busca por genero
+              </A>
+            </>
             <Title>Desafio Promobit</Title>
-
-            <SearchContainer>
-              <SearchInput
-                type="text"
-                placeholder="Buscar"
-                value={this.state.search}
-                readOnly
-              />
-            </SearchContainer>
           </Menu>
         </Topbar>
         <Grid>
-          <Section style={{ alignContent: "center" }}>
-            {!this.props.movielist.results ? (
+          <Section style={{ alignContent: "center", minHeight:'100vh' }}>
+            {!this.props.moviebygenre.results ? (
               <List>
                 <ListItem>
                   <CardContainer>
@@ -135,9 +134,8 @@ export class index extends Component {
                   )}
                 </FilterContainer>
                 <List>
-                  {console.log(this.props.movielist)}
-                  {console.log(this.props.totalPages)}
-                  {this.props.movielist.results.map((item) => {
+                  {console.log(this.props.moviebygenre)}
+                  {this.props.moviebygenre.results.map((item) => {
                     return (
                       <Link href={"/movie/"+item.id} onClick={()=>this.props.setId(item.id)}>
                       <ListItem
@@ -184,14 +182,14 @@ export class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movielist: state.movielist,
-  totalPages: state.totalPages,
+  moviebygenre: state.moviebygenre,
+  totalPagesg: state.totalPagesg,
   moviegenre: state.moviegenre
 });
 
 //const mapDispatchToProps = {
 //    this.props.getDataSuccess}
 
-export default connect(mapStateToProps, { getData, getDetail, getGenre,movieByGenre, setId})(
+export default connect(mapStateToProps, { getDetail, getGenre,movieByGenre, setId})(
   index
 );

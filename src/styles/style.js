@@ -357,7 +357,6 @@ export const A = styled.a`
   color: rgb(255,255,255);
   text-decoration: none;
   &:hover {
-    background-color: rgb(255, 255, 255);
     color: rgb(105, 153, 232);
   }
   &:after {

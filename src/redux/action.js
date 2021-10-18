@@ -18,6 +18,7 @@ import {
           },
         })
         .then((response) => {
+          console.log(response)
           dispatch(getDataSuccess(response.data));
         });
     };
@@ -102,7 +103,7 @@ import {
   export function movieGenre(data){
     return{
       type:MOVIESBYGENRE,
-      movielist:data,
+      moviebygenre:data,
       totalPages:data.total_pages
     }
   }

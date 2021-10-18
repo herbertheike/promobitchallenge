@@ -74,16 +74,18 @@ export class index extends Component {
       <Container>
         <Topbar>
           <Menu>
+            
+          <>
+            <A href={"/"} >
+                Home
+              </A>
+              <A href={"/genero"}  style={{padding:10}}>
+                Busca por genero
+              </A>
+            </>
+
             <Title>Desafio Promobit</Title>
 
-            <SearchContainer>
-              <SearchInput
-                type="text"
-                placeholder="Buscar"
-                value={this.state.search}
-                readOnly
-              />
-            </SearchContainer>
           </Menu>
         </Topbar>
         <Grid>

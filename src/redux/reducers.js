@@ -10,6 +10,7 @@ import {
     movielist:[],
     moviedetail:[],
     totalPages:0,
+    totalPagesg:0,
     moviegenre:[],
     id:'',
     moviebygenre:[]
@@ -26,7 +27,7 @@ import {
       case SET_ID_DETAIL:
         return { ...state, id:state.id}
       case MOVIESBYGENRE:
-        return { ...state,movielist: action.movielist, totalPages:action.totalPages}
+        return { ...state,moviebygenre: action.moviebygenre, totalPagesg:action.totalPagesg}
       default:
         return state;
     }
