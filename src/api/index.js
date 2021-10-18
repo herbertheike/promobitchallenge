@@ -7,8 +7,7 @@ const config = {
   },
 };
 const api = axios.create({
-  //baseURL: "http://localhost:8010/proxy",
-  baseURL: "https://api.themoviedb.org/3/",
+  baseURL: "/api/cors/",
   https: config,
 });
 export default api;

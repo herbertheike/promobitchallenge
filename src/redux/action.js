@@ -34,7 +34,8 @@ import {
   export function getDetail(movieid) {
     return async function (dispatch) {
       return await api
-        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR&append_to_response=release_dates,credits,similar", {
+        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR&append_to_response=release_dates,credits,similar", 
+        {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -78,13 +79,13 @@ import {
     };
   };
 
-  export function movieByGenre(id){
+  export function movieByGenre(id, page){
     console.log(id)
     return async function (dispatch) {
       return await api
         .get("discover/movie?api_key="
         +api_key+
-        "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
+        "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page+"&with_genres="
         +id, {
           method: "GET",
           headers: {
