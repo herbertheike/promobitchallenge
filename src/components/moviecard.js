@@ -1,3 +1,4 @@
+
 import React from "react";
 import { connect } from "react-redux";
 import {
@@ -9,6 +10,7 @@ import {
 } from "../styles/style";
 
 
+
 const Moviecard = ({
   id,
   title,
@@ -16,25 +18,31 @@ const Moviecard = ({
   vote,
   duration,
   moviecover,
-  link
 }) => {
   return (
+               
     <CardContainer>
+      <MoviePoster src={"https://image.tmdb.org/t/p/original/"+moviecover} alt="Movie cover" />
       <CardContent>
+        <Label>{vote*10}%</Label>
         <SubTitle>
             {title}
         </SubTitle>
-        <Label>
+        
+      </CardContent>
+      
+    </CardContainer>
+  );
+};
+
+/**DEPRECATED
+ * <Label>
           {overview} - {vote}
         </Label>
         <Label>
           {duration}
         </Label>
-      </CardContent>
-      <MoviePoster src={"https://image.tmdb.org/t/p/original/"+moviecover} alt="Movie cover" />
-    </CardContainer>
-  );
-};
+ */
 
 
 export default connect(null)(Moviecard);

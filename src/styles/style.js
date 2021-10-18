@@ -12,12 +12,15 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+  flex 1;
   flex-direction: column;
+  text-align:left;
+  color:rgb(0,0,0);
+  background-color: rgba(255, 255, 255);
 `;
 export const Section = styled.div`
   background-color: rgb(18, 18, 18);
-  min-height: 100vh;
+  max-height:100vw;
   text-align:center;
   background-image: linear-gradient(180deg, #41295a 0%, #2f0743 100%);
 `;
@@ -32,21 +35,23 @@ export const List = styled.ul`
   list-style: none;
   margin: 0px;
   padding: 10px;
+  display:inline-block;
   position: relative;
-  max-width: 100%;
+  max-width: 80vw;
+  white-space:wrap;
 
 `;
 
 export const ListItem = styled.li`
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
   position: relative;
   text-decoration: none;
-  width: 100%;
   box-sizing: border-box;
   text-align: left;
-  padding-bottom: 0.25rem;
+  padding: 0.2rem;
+  
 `;
 
 export const Topbar = styled.header`
@@ -105,7 +110,7 @@ export const SearchInput = styled.input`
 `;
 
 export const Title = styled.title`
-    display:contents;
+    display:flex;
     margin: 0px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 500;
@@ -116,7 +121,7 @@ export const Title = styled.title`
     text-overflow: ellipsis;
     white-space: nowrap;
     flex-grow: 1;
-    padding-left 1rem;
+    padding: 10px;
     color:white;
     
 `;
@@ -133,7 +138,8 @@ export const SubTitle = styled.div`
   margin: 0;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  max-width:2:rem;
   letter-spacing: 0em;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -143,10 +149,10 @@ export const Label = styled.label`
   margin: 0px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1rem;
   text-align:justify;
-  color: rgba(48, 48, 48, 0.7);
+  color: rgba(0,0,0, 0.7);
   display: block;
   max-width: 320px;
   &:hover {
@@ -175,32 +181,148 @@ export const CardContainer = styled.div`
   overflow: hidden;
   display: flex;
   margin-right: 0.25rem;
-  max-width: 600px;
-  flex-direction: row;
+  max-width: 10rem;
+  max-height:20rem;
+  flex-direction: column;
+  cursor:pointer;
+  &:hover {
+    transform:  scale(1.05);
+    z-index: 1;
+    box-shadow: 1px 1px 13px 4px #000000;
+  }
+  transition:all 0.4s 0s ease;
 `;
 export const CardContent = styled.div`
   padding: 11px;
-  flex: 1 0;
+  display:inline-block;
   flex-direction: column;
   max-width: 320px;
 `;
 export const MoviePoster = styled.img`
   display: block;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 15rem;
   width:10rem;
+  height:15rem;
   object-fit: cover;
-  max-width: 25rem;
 `;
 export const MoviePosterDetail = styled.img`
   display: block;
   background-repeat: no-repeat;
   background-position: center;
-  height: 25rem;
   width:20rem;
   object-fit: cover;
   max-width: 30rem;
+`;
+
+export const MovieContainer = styled.div`
+  
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+  height:35rem;
+  flex-direction: column;
+  background-size: cover;
+
+`;
+export const MovieContent = styled.div`
+  padding: 11px;
+  margin: 0px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+
+`;
+export const MovieTitle = styled.title`
+display:inline;
+color:white;
+font-size:2rem;
+padding:10px;
+padding-left:0px;
+font-family: Roboto, Helvetica, Arial, sans-serif;
+font-weight:bold;
+`;
+export const MovieSinopsis = styled.p`
+color:white;
+font-size:1rem;
+`;
+export const MovieVoteAvarage = styled.span`
+ display:inline;
+ color:white;
+ padding: 10px;
+ padding-left:0px;
+ font-size:1.5rem;
+ font-family: Roboto, Helvetica, Arial, sans-serif;
+ font-weight:bold;
+`;
+export const MovieGenre = styled.div `
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    white-space: nowrap;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    cursor: default;
+    outline: 0px;
+    text-decoration: none;
+    border: 0px;
+    padding: 10px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin: 2px;
+    `;
+
+    export const CastContainer = styled.li`
+  background-color: white;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  margin:3px;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  );
+  overflow: hidden;
+  display: inline-flex;
+  max-width:8rem;
+  margin-right: 0.25rem;
+  flex-direction: column;
+  text-align:center;
+  cursor:pointer;
+  &:hover {
+    transform:  scale(1.01);
+    z-index: 1;
+    box-shadow: 1px 1px 13px 4px #000000;
+  }
+  transition:all 0.4s 0s ease;
+`;
+export const CastContent = styled.div`
+  padding: 11px;
+  display:inline;
+  flex-direction: column;
+`;
+export const CastPoster = styled.img`
+  object-fit:cover;
+  width:8rem;
+`;
+export const CastName = styled.div`
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  max-width:2:rem;
+  letter-spacing: 0em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  &:hover {
+    font-size: 0.5rem;
+    text-overflow: ellipsis;
+  overflow: visible;
+  white-space: nowrap;
+   
+  }
 `;
 export const Button = styled.button`
   display: flex;
@@ -232,7 +354,28 @@ export const Button = styled.button`
   }
 `;
 export const A = styled.a`
-  color: rgb(0, 0, 0);
+  color: rgb(255,255,255);
+  text-decoration: none;
+  &:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(105, 153, 232);
+  }
+  &:after {
+    color: rgb(123, 456, 231);
+  }
+`;
+export const NumberBox = styled.label`
+  display:flex;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border:1px;
+  border-color:rgba(255,255,255);
+  color: rgba(255,255,255);
+  text-decoration: none;
+`;
+export const Textlabel = styled.label`
+  color: rgb(255,255,255);
+  padding: 10px;
   text-decoration: none;
   &:hover {
     background-color: rgb(255, 255, 255);

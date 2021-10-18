@@ -2,8 +2,7 @@ import {
     GET_MOVIE_POPULAR,
     GET_MOVIE_DETAIL,
     GET_MOVIE_GENRE,
-    SET_GENRE,
-    REMOVE_GENRE,
+    SET_ID_DETAIL,
     MOVIESBYGENRE
   } from "./actionTypes";
   import api from "../api/index";
@@ -35,7 +34,7 @@ import {
   export function getDetail(movieid) {
     return async function (dispatch) {
       return await api
-        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR&with_genres=28", {
+        .get("/movie/"+movieid+"?api_key="+api_key+"&language=pt-BR&append_to_response=release_dates,credits,similar", {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -107,19 +106,11 @@ import {
     }
   }
 
-  export function setGenre(id){
+  export function setId(id){
     return{
-      type:SET_GENRE,
+      type: SET_ID_DETAIL,
       id:id
     }
   }
-
-  export function removeGenre(id){
-    return{
-      type:REMOVE_GENRE,
-      id:id
-    }
-  }
-
 
   const api_key = "95fd72b0a390903e28731f934a0b094e"

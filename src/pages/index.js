@@ -24,9 +24,10 @@ import {
   FilterColumn,
   FilterLabel,
   FilterCheckBox,
+  A
 } from "../styles/style";
 import Moviecard from "../components/moviecard.js";
-import { getDetail, getGenre, getData,setGenre,removeGenre, movieByGenre } from "../redux/action";
+import { getDetail, getGenre, getData,movieByGenre,setId } from "../redux/action";
 import ReactPaginate from "react-paginate";
 import Link from 'next/link'
 
@@ -59,16 +60,12 @@ export class index extends Component {
     if(isChecked === true){
       let b = str.concat(value+",")
       this.setState({str:b})
-      this.state.arrg.push(value);
       console.log(b)
-      this.props.setGenre(value)
       this.props.movieByGenre(b)
     }else{
       let c = str.replace(value+",",'')
       this.setState({str:c})
       console.log(c)
-      this.state.arrg.splice(this.state.arrg.indexOf(value),1)
-      this.props.removeGenre(value)
       this.props.movieByGenre(c)
     }
   }
@@ -77,7 +74,7 @@ export class index extends Component {
       <Container>
         <Topbar>
           <Menu>
-            <Title>Desafio promobit</Title>
+            <Title>Desafio Promobit</Title>
 
             <SearchContainer>
               <SearchInput
@@ -121,30 +118,17 @@ export class index extends Component {
               </List>
             ) : (
               <>
-              <Title style={{display:"grid"}}>Buscar por genero</Title>
-                <FilterContainer>
-                  {!this.props.moviegenre.genres ? (
-                    <FilterLabel>Loading...</FilterLabel>
-                  ) : (
-                    this.props.moviegenre.genres.map((item) => {
-                      return (
-                          <FilterColumn key={item.id}>
-                            <FilterCheckBox value={item.id} onClick={(e)=>this.handleClick(e)}/>
-                            
-                            <FilterLabel> {item.name}</FilterLabel>
-                          </FilterColumn>
-                      );
-                    })
-                  )}
-                </FilterContainer>
+              <Title style={{display:"grid"}}>Filmes Populares</Title>
                 <List>
                   {console.log(this.props.movielist)}
                   {console.log(this.props.totalPages)}
                   {this.props.movielist.results.map((item) => {
                     return (
+                      <Link href={"/movie/"+item.id} onClick={()=>this.props.setId(item.id)}>
                       <ListItem
-                        key={item.id}
+                        key={item.id} 
                       >
+                           
                         <Moviecard
                           id={item.id}
                           title={item.title}
@@ -154,17 +138,16 @@ export class index extends Component {
                           moviecover={item.poster_path}
                           link={item.original_language}
                         />
-                        <Link href={"/movie/"+item.title}>
-                          <a>Go to pages/movie/[movie-name].js</a>
-                        </Link>
+                                               
                       </ListItem>
+                      </Link>
                     );
                   })}
                 </List>
               </>
             )}
-            <ReactPaginate
-              pageCount={this.state.totalPages}
+            {<ReactPaginate
+              pageCount={this.props.totalPages}
               pageRange={1}
               marginPagesDisplayed={1}
               onPageChange={this.handlePagination}
@@ -177,7 +160,7 @@ export class index extends Component {
               activeClassName={"active"}
               previousLabel={"<"}
               nextLabel={">"}
-            />
+            />}
           </Section>
         </Grid>
       </Container>
@@ -188,13 +171,12 @@ export class index extends Component {
 const mapStateToProps = (state) => ({
   movielist: state.movielist,
   totalPages: state.totalPages,
-  moviegenre: state.moviegenre,
-  id: state.id,
+  moviegenre: state.moviegenre
 });
 
 //const mapDispatchToProps = {
 //    this.props.getDataSuccess}
 
-export default connect(mapStateToProps, { getData, getDetail, getGenre,setGenre,removeGenre, movieByGenre})(
+export default connect(mapStateToProps, { getData, getDetail, getGenre,movieByGenre, setId})(
   index
 );
