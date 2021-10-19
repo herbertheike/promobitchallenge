@@ -24,6 +24,8 @@ import {
   FilterColumn,
   FilterLabel,
   FilterCheckBox,
+  CheckBox,
+  CheckBoxContainer,
   A
 } from "../styles/style";
 import Moviecard from "../components/moviecard.js";
@@ -35,22 +37,24 @@ export class index extends Component {
   state = {
     search: "",
     page: 1,
-    totalPages: this.props.totalPages,
+    totalPages: this.props.totalPagesg,
     arrg:[],
     str:''
   };
 
   componentDidMount() {
-    this.props.movieByGenre(0,this.state.page);
+    this.props.movieByGenre(null,this.state.page);
     this.props.getGenre();
   }
 
   handlePagination = (e) => {
     let selected = e.selected;
     let newselected = selected + 1;
+    let str = this.state.str;
+    let page = this.state.page;
     console.log(newselected);
     console.log(e);
-    this.props.movieByGenre(this.state.page);
+    this.props.movieByGenre(str, newselected);
   };
 
   handleClick = (e) =>{
@@ -61,12 +65,12 @@ export class index extends Component {
       let b = str.concat(value+",")
       this.setState({str:b})
       console.log(b)
-      this.props.movieByGenre(b, this.state.page)
+      this.props.movieByGenre(b, 1)
     }else{
       let c = str.replace(value+",",'')
       this.setState({str:c})
       console.log(c)
-      this.props.movieByGenre(c,this.state.page)
+      this.props.movieByGenre(c,1)
     }
   }
   render() {
@@ -126,8 +130,7 @@ export class index extends Component {
                       return (
                           <FilterColumn key={item.id}>
                             <FilterCheckBox value={item.id} onClick={(e)=>this.handleClick(e)}/>
-                            
-                            <FilterLabel> {item.name}</FilterLabel>
+                            <FilterLabel> {item.name.toUpperCase()}</FilterLabel>
                           </FilterColumn>
                       );
                     })
@@ -160,7 +163,7 @@ export class index extends Component {
               </>
             )}
             {<ReactPaginate
-              pageCount={this.props.totalPages}
+              pageCount={this.props.totalPagesg}
               pageRange={1}
               marginPagesDisplayed={1}
               onPageChange={this.handlePagination}

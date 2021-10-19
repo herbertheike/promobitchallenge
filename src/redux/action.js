@@ -104,7 +104,7 @@ import {
     return{
       type:MOVIESBYGENRE,
       moviebygenre:data,
-      totalPages:data.total_pages
+      totalPagesg:data.total_pages
     }
   }
 

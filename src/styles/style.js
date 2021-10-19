@@ -386,8 +386,8 @@ export const Textlabel = styled.label`
 `;
 export const FilterContainer = styled.div`
     padding: 10px;
-    column-gap: 30px;
-    column-count: 4;
+    column-gap: 3px;
+    column-count: 5;
     align-items: center; 
     justify-content: center;
     display: inline-block;
@@ -406,9 +406,16 @@ export const FilterElement = styled.div`
 `;
 export const FilterLabel = styled.label`
   font-size:12px;
+  
   font-family: Roboto, Helvetica, Arial, sans-serif;
   color: rgb(255,255,255);
 `;
 export const FilterCheckBox = styled.input.attrs({ type: 'checkbox' })`
-background-color:white;
+  width: 17px;
+  height:17px;
+  &:hover {
+    border: 0px;
+  }
+}
 `;
+
