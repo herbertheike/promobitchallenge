@@ -76,7 +76,7 @@ export class index extends Component {
           <Menu>
             
           <>
-            <A href={"/"} >
+            <A href={"/"} style={{padding:10}}>
                 Home
               </A>
               <A href={"/genero"}  style={{padding:10}}>
@@ -89,7 +89,7 @@ export class index extends Component {
           </Menu>
         </Topbar>
         <Grid>
-          <Section style={{ alignContent: "center" }}>
+          <Section style={{ alignContent: "center", minHeight:'100vh' }}>
             {!this.props.movielist.results ? (
               <List>
                 <ListItem>

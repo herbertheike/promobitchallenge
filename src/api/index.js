@@ -1,4 +1,6 @@
 import axios from "axios";
+import handler from "../pages/api/cors";
+handler
 
 const config = {
   headers: {
@@ -7,7 +9,7 @@ const config = {
   },
 };
 const api = axios.create({
-  baseURL: "/api/cors/",
+  baseURL: "https://api.themoviedb.org/3/",
   https: config,
 });
 export default api;

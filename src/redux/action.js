@@ -6,11 +6,13 @@ import {
     MOVIESBYGENRE
   } from "./actionTypes";
   import api from "../api/index";
+import handler from "../pages/api/cors";
+  handler
   
   export function getData(page) {
     return async function (dispatch) {
-      return await api
-        .get("/movie/popular?api_key="+api_key+"&language=pt-BR&page="+page+"&region=BR", {
+      return await 
+      api.get("/movie/popular?api_key="+api_key+"&language=pt-BR&page="+page+"&region=BR", {
           method: "GET",
           headers: {
             "Access-Control-Allow-Origin": "*",
