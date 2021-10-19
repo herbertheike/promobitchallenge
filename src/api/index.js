@@ -7,7 +7,7 @@ const config = {
   },
 };
 const api = axios.create({
-  baseURL: "/api/cors",
+  baseURL: "/api/cors/",
   https: config,
 });
 export default api;

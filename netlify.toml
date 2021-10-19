@@ -1,0 +1,3 @@
+[[redirects]]
+  from = "/api/cors/:path*"
+  to = "https://api.themoviedb.org/3/:path*"

@@ -413,9 +413,7 @@ export const FilterLabel = styled.label`
 export const FilterCheckBox = styled.input.attrs({ type: 'checkbox' })`
   width: 17px;
   height:17px;
-  &:hover {
-    border: 0px;
-  }
+  border-radius:100px;
 }
 `;
 
