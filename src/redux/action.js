@@ -6,8 +6,6 @@ import {
     MOVIESBYGENRE
   } from "./actionTypes";
   import api from "../api/index";
-import handler from "../pages/api/cors";
-  handler
   
   export function getData(page) {
     return async function (dispatch) {
